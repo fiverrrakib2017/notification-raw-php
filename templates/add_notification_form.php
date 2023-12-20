@@ -147,14 +147,6 @@ if(isset($_POST['btnAdd'])){
                                                 <label for="title">Title</label><?php echo isset($error['title']) ? $error['title'] : '';?>
                                             </div>
                                         </div>
-                                        <!--
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                <input type="text" name="message" id="message" required/>
-                                                <label for="message">Message</label><?php //echo isset($error['message']) ? $error['message'] : '';?>
-                                            </div>
-                                        </div>
-                                        -->
                                         <div class="row">
                                             <div class="input-field col s12">
                                                 <textarea name="message" id="message" class="materialize-textarea" required></textarea>

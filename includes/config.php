@@ -84,4 +84,18 @@
     $value = mysqli_fetch_array($value);
     $valueLTR = $value['app_direction'];
 
+
+    $setting_qry="SELECT * FROM tbl_settings where id='1'";
+    $setting_result=mysqli_query($connect,$setting_qry);
+    $settings_details=mysqli_fetch_assoc($setting_result);
+
+
+    // $settings_details['onesignal_app_id'];
+    // $settings_details['onesignal_rest_key'];
+
+    
+
+
+
+
 ?>

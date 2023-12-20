@@ -42,9 +42,11 @@
                     </a>
                 </li>
 
-                <li class="bold <?php echo $selectedMenu == "notification" ? 'active' : "";?>">
-                    <a href="notification.php" class="waves-effect waves ahover <?php echo $selectedMenu == "notification" ? 'deep-orange-text' : "";?>">
-                        <i class="mdi-social-notifications"></i>Push Notification
+                
+
+                <li class="bold <?php echo $selectedMenu == "new_notification" ? 'active' : "";?>">
+                    <a href="new_notification.php" class="waves-effect waves ahover <?php echo $selectedMenu == "notification" ? 'deep-orange-text' : "";?>">
+                        <i class="mdi-social-notifications"></i>Notification
                     </a>
                 </li>
 <!--			

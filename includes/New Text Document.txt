@@ -1,0 +1,37 @@
+envato_buyer_name
+envato_purchase_code
+
+`envato_buyer_email` 
+  `envato_purchased_status` 
+  `package_name`
+  `app_api_key`
+  `onesignal_app_id` 
+  `onesignal_rest_key`
+
+`facebook_interstital_ad_id` varchar(255) NOT NULL,
+  `facebook_interstital_ad_click` varchar(255) NOT NULL,
+facebook_banner_ad_id
+
+
+`facebook_native_ad` varchar(255) NOT NULL,
+  `facebook_native_ad_id` varchar(255) NOT NULL,
+  `facebook_native_ad_click` varchar(255) NOT NULL,
+  `admob_nathive_ad` varchar(255) NOT NULL,
+  `admob_native_ad_id` varchar(255) NOT NULL,
+  `admob_native_ad_click` varchar(255) NOT NULL,
+  `currency_code` varchar(255) NOT NULL,
+  `company` varchar(255) NOT NULL,
+
+
+`banner_size_fb` varchar(255) NOT NULL DEFAULT 'BANNER_HEIGHT_90',
+
+
+`auto_post` varchar(255) NOT NULL,
+  `currency_position` varchar(255) NOT NULL DEFAULT 'true',
+  `google_login` varchar(255) NOT NULL DEFAULT 'true',
+  `facebook_login` varchar(255) NOT NULL DEFAULT 'true',
+  `home_page` varchar(255) NOT NULL DEFAULT 'true',
+  `ad_promote` varchar(255) NOT NULL DEFAULT 'true',
+  `isRTL` varchar(255) NOT NULL DEFAULT 'false'
+
+
