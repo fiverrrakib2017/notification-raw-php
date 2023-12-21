@@ -264,6 +264,8 @@ if(isset($_POST['submitPrivacyPolicy'])) {
                             <li class="tab l2 s12 m2"><a class="active" href="#appSettings">App Settings</a></li>
                             <li class="tab l2 s12 m2"><a href="#autoupdateSettings">Auto Update</a></li>
                             <li class="tab l2 s12 m2"><a href="#admobSettings">Admob Settings</a></li>
+                             <li class="tab l2 s12 m2"><a href="#meta_ads_settings">Meta ads Settings</a></li>
+                              <li class="tab l2 s12 m2"><a href="#unity_ads_settings">Unity ads settings</a></li>
                             <li class="tab l2 s12 m3"><a href="#appNotification">Notification Settings</a></li>
                             <li class="tab l2 s12 m3"><a href="#privacyPolicy">Privacy Policy</a></li>
                         </ul>
@@ -595,48 +597,303 @@ if(isset($_POST['submitPrivacyPolicy'])) {
                     </div>
                     <!-- 3. Admob Settings End -->
 
+                    <!-- . Meta Ads Settings Start -->
+                    <div id="meta_ads_settings" class="col s12">
+                        <div class="row">
+                            <form method="post" class="col s12" id="form-validation" enctype="multipart/form-data">
+                                <div class="row">
+                                    <br/>
+                                    <div class="row col l12 s12">
+                                        <?php echo isset($error['error_data']) ? $error['error_data'] : '';?>
+                                        <?php if(isset($_SESSION['msg_admob_setting'])) { ?>
+                                            <div class='card-panel green lighten-4'>
+                                                <span class='green-text text-darken-2'>
+                                                    Successfully Saved.
+                                                </span>
+                                            </div>
+                                        <?php unset($_SESSION['msg_admob_setting']); }?>
+                                    </div>
+
+                                    <div class="input-field col s12 m12">
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                            <input type="text" name="publisher_id" id="publisher_id" value="<?php echo $data['publisher_id']; ?>" maxlength=50 required/>
+                                            <label for="publisher_id">Publisher Id</label><?php echo isset($error['publisher_id']) ? $error['publisher_id'] : '';?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <div class="row input-field col s12 m6">
+                                            <ul class="collection with-header">
+                                                <li class="collection-header  grey lighten-3">
+                                                    <h5 class="task-card-title">Meta Ad</h5>
+                                                    <!-- <p class="task-card-date">Show/hide setting for Native ad in app</p> -->
+                                                </li>
+                                                <li class="collection-item">
+                                                    <div class="row">
+                                                        <div class="input-field col s12">
+                                                        <select name="native_ad">
+                                                            <option value="1" <?php if($data['native_ad'] == 1) echo "selected"; ?> ><?php echo TRUE_AD; ?></option>
+                                                            <option value="0" <?php if($data['native_ad'] == 0) echo "selected"; ?> ><?php echo FALSE_AD; ?></option>
+                                                        </select>
+                                                        <label>Meta Ad</label><?php echo isset($error['native_ad']) ? $error['native_ad'] : '';?></div>
+                                                    </div>
+                                                
+                                                    <div class="row">
+                                                        <div class="input-field col s12">
+                                                        <input type="text" name="native_ad_id" id="native_ad_id" value="<?php echo $data['native_ad_id']; ?>" maxlength=50 required/>
+                                                        <label for="native_ad_id">Native Ad Id</label><?php echo isset($error['native_ad_id']) ? $error['native_ad_id'] : '';?>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="row input-field col s12 m6">
+                                            <ul class="collection with-header">
+                                                <li class="collection-header  grey lighten-3">
+                                                    <h5 class="task-card-title">Meta Banner Ad</h5>
+                                                    <!-- <p class="task-card-date">Show/hide setting for Banner in app</p> -->
+                                                </li>
+                                                <li class="collection-item">
+                                                    <div class="row">
+                                                        <div class="input-field col s12">
+                                                        <select name="banner_ad">
+                                                            <option value="1" <?php if($data['banner_ad'] == 1) echo "selected"; ?> ><?php echo TRUE_AD; ?></option>
+                                                            <option value="0" <?php if($data['banner_ad'] == 0) echo "selected"; ?> ><?php echo FALSE_AD; ?></option>
+                                                        </select>
+                                                        <label>Banner Ad</label><?php echo isset($error['banner_ad']) ? $error['banner_ad'] : '';?></div>
+                                                    </div>
+                                                
+                                                    <div class="row">
+                                                        <div class="input-field col s12">
+                                                        <input type="text" name="banner_ad_id" id="banner_ad_id" value="<?php echo $data['banner_ad_id']; ?>" maxlength=50 required/>
+                                                        <label for="banner_ad_id">Banner Ad Id</label><?php echo isset($error['banner_ad_id']) ? $error['banner_ad_id'] : '';?>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="row input-field col s12 m6">
+                                            <ul class="collection with-header">
+                                                <li class="collection-header  grey lighten-3">
+                                                    <h5 class="task-card-title">Meta Interstital Ad</h5>
+                                                    <!-- <p class="task-card-date">Show/hide setting for Interstital in app</p> -->
+                                                </li>
+                                                <li class="collection-item">
+                                                    <div class="row">
+                                                        <div class="input-field col s12">
+                                                        <select name="interstital_ad">
+                                                            <option value="1" <?php if($data['interstital_ad'] == 1) echo "selected"; ?> ><?php echo TRUE_AD; ?></option>
+                                                            <option value="0" <?php if($data['interstital_ad'] == 0) echo "selected"; ?> ><?php echo FALSE_AD; ?></option>
+                                                        </select>
+                                                        <label>Interstital Ad</label><?php echo isset($error['interstital_ad']) ? $error['interstital_ad'] : '';?></div>
+                                                    </div>
+                                                
+                                                    <div class="row">
+                                                        <div class="input-field col s12">
+                                                        <input type="text" name="interstital_ad_id" id="interstital_ad_id" value="<?php echo $data['interstital_ad_id']; ?>" maxlength=50 required/>
+                                                        <label for="interstital_ad_id">Meta Interstital Ad Id</label><?php echo isset($error['interstital_ad_id']) ? $error['interstital_ad_id'] : '';?>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="input-field col s12">
+                                                        <input type="text" name="interstital_ad_click" id="interstital_ad_click" value="<?php echo $data['interstital_ad_click']; ?>" maxlength=2 required/>
+                                                        <label for="interstital_ad_click">Meta Interstital Ad Click</label><?php echo isset($error['interstital_ad_click']) ? $error['interstital_ad_click'] : '';?>
+                                                        </div>
+                                                    </div>
+
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="row input-field col s12">                                               
+                                            <button class="btn deep-orange waves-effect waves-light" type="submit" name="submitAdmobSettings">Submit
+                                                <i class="mdi-content-send right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--  Meta Ads Settings End -->
+                    <!-- . Meta Ads Settings Start -->
+                    <div id="unity_ads_settings" class="col s12">
+                        <div class="row">
+                            <form method="post" class="col s12" id="form-validation" enctype="multipart/form-data">
+                                <div class="row">
+                                    <br/>
+                                    <div class="row col l12 s12">
+                                        <?php echo isset($error['error_data']) ? $error['error_data'] : '';?>
+                                        <?php if(isset($_SESSION['msg_admob_setting'])) { ?>
+                                            <div class='card-panel green lighten-4'>
+                                                <span class='green-text text-darken-2'>
+                                                    Successfully Saved.
+                                                </span>
+                                            </div>
+                                        <?php unset($_SESSION['msg_admob_setting']); }?>
+                                    </div>
+
+                                    <div class="input-field col s12 m12">
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                            <input type="text" name="publisher_id" id="publisher_id" value="<?php echo $data['publisher_id']; ?>" maxlength=50 required/>
+                                            <label for="publisher_id">Publisher Id</label><?php echo isset($error['publisher_id']) ? $error['publisher_id'] : '';?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <div class="row input-field col s12 m6">
+                                            <ul class="collection with-header">
+                                                <li class="collection-header  grey lighten-3">
+                                                    <h5 class="task-card-title">Unity  Ad</h5>
+                                                    <!-- <p class="task-card-date">Show/hide setting for Native ad in app</p> -->
+                                                </li>
+                                                <li class="collection-item">
+                                                    <div class="row">
+                                                        <div class="input-field col s12">
+                                                        <select name="native_ad">
+                                                            <option value="1" <?php if($data['native_ad'] == 1) echo "selected"; ?> ><?php echo TRUE_AD; ?></option>
+                                                            <option value="0" <?php if($data['native_ad'] == 0) echo "selected"; ?> ><?php echo FALSE_AD; ?></option>
+                                                        </select>
+                                                        <label>Unity  Ad</label><?php echo isset($error['native_ad']) ? $error['native_ad'] : '';?></div>
+                                                    </div>
+                                                
+                                                    <div class="row">
+                                                        <div class="input-field col s12">
+                                                        <input type="text" name="native_ad_id" id="native_ad_id" value="<?php echo $data['native_ad_id']; ?>" maxlength=50 required/>
+                                                        <label for="native_ad_id">Native Ad Id</label><?php echo isset($error['native_ad_id']) ? $error['native_ad_id'] : '';?>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="row input-field col s12 m6">
+                                            <ul class="collection with-header">
+                                                <li class="collection-header  grey lighten-3">
+                                                    <h5 class="task-card-title">Unity Banner Ad</h5>
+                                                    <!-- <p class="task-card-date">Show/hide setting for Banner in app</p> -->
+                                                </li>
+                                                <li class="collection-item">
+                                                    <div class="row">
+                                                        <div class="input-field col s12">
+                                                        <select name="banner_ad">
+                                                            <option value="1" <?php if($data['banner_ad'] == 1) echo "selected"; ?> ><?php echo TRUE_AD; ?></option>
+                                                            <option value="0" <?php if($data['banner_ad'] == 0) echo "selected"; ?> ><?php echo FALSE_AD; ?></option>
+                                                        </select>
+                                                        <label>Unity Banner Ad</label><?php echo isset($error['banner_ad']) ? $error['banner_ad'] : '';?></div>
+                                                    </div>
+                                                
+                                                    <div class="row">
+                                                        <div class="input-field col s12">
+                                                        <input type="text" name="banner_ad_id" id="banner_ad_id" value="<?php echo $data['banner_ad_id']; ?>" maxlength=50 required/>
+                                                        <label for="banner_ad_id">Unity Banner Ad Id</label><?php echo isset($error['banner_ad_id']) ? $error['banner_ad_id'] : '';?>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="row input-field col s12 m6">
+                                            <ul class="collection with-header">
+                                                <li class="collection-header  grey lighten-3">
+                                                    <h5 class="task-card-title">Unity Interstital Ad</h5>
+                                                    <!-- <p class="task-card-date">Show/hide setting for Interstital in app</p> -->
+                                                </li>
+                                                <li class="collection-item">
+                                                    <div class="row">
+                                                        <div class="input-field col s12">
+                                                        <select name="interstital_ad">
+                                                            <option value="1" <?php if($data['interstital_ad'] == 1) echo "selected"; ?> ><?php echo TRUE_AD; ?></option>
+                                                            <option value="0" <?php if($data['interstital_ad'] == 0) echo "selected"; ?> ><?php echo FALSE_AD; ?></option>
+                                                        </select>
+                                                        <label>Interstital Ad</label><?php echo isset($error['interstital_ad']) ? $error['interstital_ad'] : '';?></div>
+                                                    </div>
+                                                
+                                                    <div class="row">
+                                                        <div class="input-field col s12">
+                                                        <input type="text" name="interstital_ad_id" id="interstital_ad_id" value="<?php echo $data['interstital_ad_id']; ?>" maxlength=50 required/>
+                                                        <label for="interstital_ad_id">Unity Interstital Ad Id</label><?php echo isset($error['interstital_ad_id']) ? $error['interstital_ad_id'] : '';?>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="input-field col s12">
+                                                        <input type="text" name="interstital_ad_click" id="interstital_ad_click" value="<?php echo $data['interstital_ad_click']; ?>" maxlength=2 required/>
+                                                        <label for="interstital_ad_click">Unity Interstital Ad Click</label><?php echo isset($error['interstital_ad_click']) ? $error['interstital_ad_click'] : '';?>
+                                                        </div>
+                                                    </div>
+
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="row input-field col s12">                                               
+                                            <button class="btn deep-orange waves-effect waves-light" type="submit" name="submitAdmobSettings">Submit
+                                                <i class="mdi-content-send right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--  Meta Ads Settings End -->
+
                    <!-- 4. Notification Setting Start -->
-<div id="appNotification" class="col s12">
-    <div class="row">
-        <form method="post" class="col s12" enctype="multipart/form-data">
-            <div class="row">
-                <br/>
-                <div class="row col l12 s12">
-                    <?php if(isset($_SESSION['msg_notification_setting'])) { ?>
-                        <div class='card-panel green lighten-4'>
-                            <span class='green-text text-darken-2'>
-                                Successfully Saved.
-                            </span>
-                        </div>
-                        <?php unset($_SESSION['msg_notification_setting']); }?>
-                </div>
+                    <div id="appNotification" class="col s12">
+                        <div class="row">
+                            <form method="post" class="col s12" enctype="multipart/form-data">
+                                <div class="row">
+                                    <br/>
+                                    <div class="row col l12 s12">
+                                        <?php if(isset($_SESSION['msg_notification_setting'])) { ?>
+                                            <div class='card-panel green lighten-4'>
+                                                <span class='green-text text-darken-2'>
+                                                    Successfully Saved.
+                                                </span>
+                                            </div>
+                                            <?php unset($_SESSION['msg_notification_setting']); }?>
+                                    </div>
 
-                <div class="input-field col s12">
-                    <div class="row">
-                        <div class="input-field col s3">
-                            Your Server Key
-                            <br>
-                            <a href="#server-key" class="modal-trigger">How to obtain your FCM Server Key</a>
-                        </div>
+                                    <div class="input-field col s12">
+                                        <div class="row">
+                                            <div class="input-field col s3">
+                                                Your Server Key
+                                                <br>
+                                                <a href="#server-key" class="modal-trigger">How to obtain your FCM Server Key</a>
+                                            </div>
 
-                        <div class="input-field col s9">
-                            <textarea name="app_fcm_key" class="materialize-textarea" id="app_fcm_key" required><?php echo $data['app_fcm_key'];?></textarea>
-                            <label for="app_fcm_key">FCM Server Key</label>
+                                            <div class="input-field col s9">
+                                                <textarea name="app_fcm_key" class="materialize-textarea" id="app_fcm_key" required><?php echo $data['app_fcm_key'];?></textarea>
+                                                <label for="app_fcm_key">FCM Server Key</label>
+                                            </div>
+                                        </div>
+
+                                        <!-- Remove the API Key section -->
+                                        
+                                        <div class="row">
+                                            <div class="input-field col s12">												
+                                                <button type="submit" name="submitNotification" class="btn deep-orange waves-effect waves-light">Save Settings</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
-
-                    <!-- Remove the API Key section -->
-                    
-                    <div class="row">
-                        <div class="input-field col s12">												
-                            <button type="submit" name="submitNotification" class="btn deep-orange waves-effect waves-light">Save Settings</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
 
                     <!-- 4. Notification Setting End -->
 

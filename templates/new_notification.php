@@ -11,7 +11,7 @@
 
     $page_title="Send Notification";
     require("includes/function.php");
-    require("includes/connection.php");
+     require("includes/connection.php");
 
    if(isset($_POST['submit'])){
 

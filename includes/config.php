@@ -92,7 +92,6 @@
 
     // $settings_details['onesignal_app_id'];
     // $settings_details['onesignal_rest_key'];
-
     
 
 
